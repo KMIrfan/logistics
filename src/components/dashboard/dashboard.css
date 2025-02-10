@@ -1,0 +1,32 @@
+.card-title{
+    font-size: 18px !important;
+    color: #111 !important;
+    font-weight: 600 !important;
+}
+
+.card-text-count{
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.text-title{
+    font-size: 18px !important;
+    color: #111 !important;
+    font-weight: 600 !important;
+}
+
+.vehicle-num{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card-sub-text{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.card-vehicle-footer{
+    font-size: 12px;
+    font-weight: 500;
+    color: #919595;
+}

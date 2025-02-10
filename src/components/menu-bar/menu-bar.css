@@ -1,0 +1,23 @@
+.menu-bar-caontainer {
+  width: 100%;
+  position: fixed;
+  z-index: 1002;
+}
+
+.logo {
+    object-fit: contain;
+    width: 29px;
+  }
+  
+  .logoText {
+    object-fit: contain;
+    width: 180px;
+    margin-top: 6px;
+  }
+  
+  @media (max-width: 991px) {
+    .logoText {
+      width: 200px;
+    }
+  }
+
