@@ -38,7 +38,7 @@ const SideMenu = () => {
   }
 
   const menuItems = [
-    { icon: 'https://cdn.builder.io/api/v1/image/assets/TEMP/046a91175d79bb2466330646031d9a8ed287b5d72edc77f0da7e628be0b99c64', text: 'Dashboard', path: '/' },
+    { icon: 'https://cdn.builder.io/api/v1/image/assets/TEMP/046a91175d79bb2466330646031d9a8ed287b5d72edc77f0da7e628be0b99c64', text: 'Dashboard', path: '/dashboard' },
     { icon: 'https://cdn.builder.io/api/v1/image/assets/TEMP/1de027de21f6c59bce0c7f33979ecf319d08546861766bcd30c07722ea5bea06', text: 'Orders', path: '/viewOrder' },
     { icon: 'https://cdn.builder.io/api/v1/image/assets/TEMP/1e3d50b2fb994f301ee11be77577f3d70f054694d8146f138b49632b3dde3cf9', text: 'Reports', path: '/report' },
     { icon: 'https://cdn.builder.io/api/v1/image/assets/TEMP/1e3d50b2fb994f301ee11be77577f3d70f054694d8146f138b49632b3dde3cf9', text: 'Users', path: '/viewUsers' },
@@ -54,7 +54,7 @@ const SideMenu = () => {
 
       {/* Sidebar */}
       <nav className={`side-menu mt-5 ${isOpen ? 'open' : 'closed'}`} aria-label="Main Navigation">
-        <div className="menu-items">
+        <div className="menu-items mt-4">
           {menuItems.map((item, index) => (
             <Link key={index} to={item.path} className="menu-item">
               <img src={item.icon} alt="" className="menu-icon" />
@@ -64,7 +64,7 @@ const SideMenu = () => {
         </div>
 
         {/* User Profile at the Bottom */}
-        <div className="user-profile rounded bg-white shadow-sm d-flex align-items-center gap-3 p-2"  onClick={() => setIsModalOpen(true)}>
+        <div className="user-profile rounded bg-white shadow-sm d-flex align-items-center gap-3 p-2 mb-5"  onClick={() => setIsModalOpen(true)}>
           <img 
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b50ae374036dc20aebef377d4cbec2b2e5b7c6114feb222b30936e48ad18eff1" 
             alt="User avatar" 
@@ -77,9 +77,7 @@ const SideMenu = () => {
           </div>
         </div>
         <Modal
-            // title="Add Order"
             open={isModalOpen}
-            // width="60vw"
             onOk={handleOk}
             onCancel={handleCancel}
             footer={null}
@@ -87,8 +85,6 @@ const SideMenu = () => {
             <Profile />
           </Modal>
       </nav>
-
-
     </>
   );
 };

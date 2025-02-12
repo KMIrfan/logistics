@@ -42,7 +42,7 @@ const Report = () => {
 
       <div className='row m-2'>
         <div className='col-12 bg-white rounded-2'>
-        <table class="table table-bordered mt-2">
+        <table className="table table-bordered mt-2">
           <thead>
             <tr>
                 <th>Order Id</th>

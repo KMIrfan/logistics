@@ -6,6 +6,13 @@ const ViewUser = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const users = [
+    { id: 1, name: 'John', role: 'Admin' },
+    { id: 2, name: 'Jane', role: 'Manager' },
+    { id: 3, name: 'Doe', role: 'Employee' },
+    { id: 4, name: 'Alice', role: 'Supervisor' },
+  ];
+
   const handleCancel = () => {
   setIsModalOpen(false)
   }
@@ -23,7 +30,7 @@ const ViewUser = () => {
         <div className='col-6 text-end'>
           <button className='btn common-btn' onClick={() => setIsModalOpen(true)}>Add User</button>
           <Modal
-            title="Add User"
+            // title="Add User"
             open={isModalOpen}
             width="60vw"
             onOk={handleOk}
@@ -36,7 +43,7 @@ const ViewUser = () => {
       </div>
       <div className='row mt-3'>
         <div className='col-12'>
-          <table class="table table-bordered mt-2">
+          <table className="table table-bordered mt-2">
             <thead>
               <tr>
                 <th>Sl No</th>
@@ -46,24 +53,16 @@ const ViewUser = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Trailer</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Trailer</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Trailer</td>              
-              </tr>
+              {users.map((user, index) => (
+                <tr key={user.id}>
+                  <td>{index + 1}</td>
+                  <td>{user.name}</td>
+                  <td>{user.role}</td>
+                  <td>
+                    <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

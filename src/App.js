@@ -11,10 +11,23 @@ import MenuBar from './components/menu-bar/menu-bar';
 import OrderDetails from './components/orders/order-details';
 import ViewMap from './components/orders/view-map';
 import Login from './components/login/login';
+import React, { useState, useEffect } from 'react';
 
 function Layout() {
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsSidebarOpen(window.innerWidth >= 968);
+  };
+  window.addEventListener("resize", handleResize);
+  handleResize();
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
   const location = useLocation();
-  const isLoginPage = location.pathname === "/"; // Check if the current route is Login page
+  const isLoginPage = location.pathname === "/"; // Check if the current route is Login page  
 
   return (
     <div className='container-fluid bg-hash'>
@@ -26,22 +39,23 @@ function Layout() {
         </div>
       )}
 
-      <div className='row'>
-        {!isLoginPage && ( // Conditionally render SideMenu if not on the login page
-          <div className='col-3 p-0'>
+      <div className="row">
+        {!isLoginPage && ( // Sidebar should be fixed and take proper width
+          <div className="col-md-3 p-0">
             <SideMenu />
           </div>
         )}
-        <div className={isLoginPage ? 'col-12 ' : 'col-md-9 col-12 mt-5'}>
+        
+        <div className={`col-12 ${!isLoginPage ? "col-md-9" : ""} mt-5`}>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/viewOrder" element={<ViewOrder />} />
             <Route path="/report" element={<Report />} />
             <Route path="/viewUsers" element={<ViewUsers />} />
             <Route path="/viewVehicles" element={<ViewVehicles />} />
             <Route path="/notification" element={<Notification />} />
-            <Route path="/viewOrder/orderDetails" element={<OrderDetails />} />
+            <Route path="/viewOrder/orderDetails/:id" element={<OrderDetails />} />
             <Route path="/viewOrder/orderDetails/viewMap" element={<ViewMap />} />
           </Routes>
         </div>

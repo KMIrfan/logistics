@@ -4,12 +4,21 @@ import Truck from '../../assets/icons/truck.svg'
 import './order.css'
 import AddOrder from './add-order-modal'
 import { Modal } from "antd";
+import { useNavigate } from 'react-router-dom';
 
 
 const ViewOrder = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const orders = [
+    { id: 1, count: 15, name: 'Electronics', destination: 'Jeddah', deliveryTime: '10hrs', status: 'Delivered' },
+    { id: 2, count: 8, name: 'Furniture', destination: 'Riyadh', deliveryTime: '12hrs', status: 'Pending' },
+    { id: 3, count: 20, name: 'Groceries', destination: 'Dammam', deliveryTime: '8hrs', status: 'Delivered' },
+    { id: 4, count: 5, name: 'Clothing', destination: 'Medina', deliveryTime: '15hrs', status: 'Shipped' },
+  ];
 
   const handleOk = () => {
 
@@ -67,85 +76,31 @@ const ViewOrder = () => {
         </div>
       </div>
 
-      
       <div className='row'>
-          <div className='col-md-4 col-12 p-1'>
-            <div className="card">
+        {orders.map((order) => (
+          <div className='col-md-4 col-12 p-1' key={order.id}>
+            <div className="card" onClick={() => navigate(`/viewOrder/orderDetails/${order.id}`)} style={{cursor: 'pointer'}}>
               <div className="card-body">
                 <div className='text-end'>
-                  <span className='text-end'>15</span>
-                  <img src={Truck} alt=''/>
+                  <span className='text-end'>{order.count}</span>
+                  <img src={Truck} alt='' />
                 </div>
-                <span className="card-title">Order Name</span>
-                  <div className='card-vehicle-footer mt-2'>
-                      <span className='px-2'>
-                        To :  Jeddah
-                      </span>
-                  </div>
-                  <div className='card-vehicle-footer'>
-                    <span className='px-2'>
-                      Delivered Time :  10hrs
-                    </span>
-                  </div>
-                  <div className='text-end'>
-                    <img src={RoundTick} alt='' width={16}/>
-                    <span className='order-status px-2'>Delivered</span>
-                  </div>
+                <span className="card-title">{order.name}</span>
+                <div className='card-vehicle-footer mt-2'>
+                  <span className='px-2'>To: {order.destination}</span>
+                </div>
+                <div className='card-vehicle-footer'>
+                  <span className='px-2'>Delivered Time: {order.deliveryTime}</span>
+                </div>
+                <div className='text-end'>
+                  <img src={RoundTick} alt='' width={16} />
+                  <span className='order-status px-2'>{order.status}</span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className='col-md-4 col-12 p-1'>
-            <div className="card">
-              <div className="card-body">
-                <div className='text-end'>
-                  <span className='text-end'>15</span>
-                  <img src={Truck} alt=''/>
-                </div>
-                <span className="card-title">Order Name</span>
-                  <div className='card-vehicle-footer mt-2'>
-                      <span className='px-2'>
-                        To :  Jeddah
-                      </span>
-                  </div>
-                  <div className='card-vehicle-footer'>
-                    <span className='px-2'>
-                      Delivered Time :  10hrs
-                    </span>
-                  </div>
-                  <div className='text-end'>
-                    <img src={RoundTick} alt='' width={16}/>
-                    <span className='order-status px-2'>Delivered</span>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div className='col-md-4 col-12 p-1'>
-            <div className="card">
-              <div className="card-body">
-                <div className='text-end'>
-                  <span className='text-end'>15</span>
-                  <img src={Truck} alt=''/>
-                </div>
-                <span className="card-title">Order Name</span>
-                  <div className='card-vehicle-footer mt-2'>
-                      <span className='px-2'>
-                        To :  Jeddah
-                      </span>
-                  </div>
-                  <div className='card-vehicle-footer'>
-                    <span className='px-2'>
-                      Delivered Time :  10hrs
-                    </span>
-                  </div>
-                  <div className='text-end'>
-                    <img src={RoundTick} alt='' width={16}/>
-                    <span className='order-status px-2'>Delivered</span>
-                  </div>
-              </div>
-            </div>
-          </div>
+        ))}
+          
       </div>
     </div>
     
