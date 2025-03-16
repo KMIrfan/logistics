@@ -1,12 +1,30 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import VehicleIcon from '../../assets/icons/vehicle.svg'
 import AddVehicle from './add-vehicle-modal'
 import { Modal } from "antd";
+import Shared from '../shared/shared'
+import vehicleService from "../../services/logistic-service";
+
 
 const ViewVehicle = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+  useEffect(() => {
+    console.log("Component mounted");
+    fetchVehicles(); // Fetch vehicles on component mount
+  }, []);
+
+  const fetchVehicles = async () => {
+    try {
+      const response = await vehicleService.getVehicles();
+      console.log("Fetched vehicles:", response.data);
+    } catch (error) {
+      console.error("Error fetching vehicles:", error);
+    }
+  };
 
   const handleCancel = () => {
   setIsModalOpen(false)
@@ -52,8 +70,7 @@ const ViewVehicle = () => {
       <div className={`filter-collapse ${isOpen ? "open" : ""}`}>
         <div className="row mt-3 mb-3">
           <div className="col-">
-            <input type="text" placeholder="Vehicle Name" className="common-input m-1" />
-            <input type="text" placeholder="Vehicle Type" className="common-input m-1" />
+            <Shared filter={"vehicles"} />
           </div>
         </div>
       </div>

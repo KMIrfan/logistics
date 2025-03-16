@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import VehicleIcon from '../../assets/icons/vehicle.svg'
+import Shared from '../shared/shared'
 
 const Notification = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+    
   return (
     <div className='container-fluid p-0'>
         <div className='row mt-4 mb-3'>
             <div className='col-12'>
                 <span className='page-head'>Notifications</span>
+            </div>
+        </div>
+
+        <i className="fa fa-filter icon-color" aria-hidden="true" onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? " Hide Filters" : " Show Filters"}
+        </i>
+        <div className={`filter-collapse ${isOpen ? "open" : ""}`}>
+            <div className="row mt-3 mb-3">
+            <Shared />
             </div>
         </div>
 

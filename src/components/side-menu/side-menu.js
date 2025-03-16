@@ -3,6 +3,7 @@ import './side-menu.css';
 import { Link } from "react-router-dom";
 import Profile from '../users/profile'
 import { Modal } from "antd";
+import loginAvathar from '../../assets/images/login-avathar.png'
 
 const SideMenu = () => {
   const [isOpen, setIsOpen] = useState(true); // Default open for desktop
@@ -66,10 +67,10 @@ const SideMenu = () => {
         {/* User Profile at the Bottom */}
         <div className="user-profile rounded bg-white shadow-sm d-flex align-items-center gap-3 p-2 mb-5"  onClick={() => setIsModalOpen(true)}>
           <img 
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b50ae374036dc20aebef377d4cbec2b2e5b7c6114feb222b30936e48ad18eff1" 
+            src={loginAvathar} 
             alt="User avatar" 
             className="rounded-circle object-fit-contain" 
-            style={{width: '74px', aspectRatio: '1'}} 
+            style={{width: '64px', aspectRatio: '1'}} 
           />
           <div className="d-flex flex-column">
             <div className="fs-6 fw-bold">Full Name</div>

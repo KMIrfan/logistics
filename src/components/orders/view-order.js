@@ -5,6 +5,7 @@ import './order.css'
 import AddOrder from './add-order-modal'
 import { Modal } from "antd";
 import { useNavigate } from 'react-router-dom';
+import Shared from '../shared/shared'
 
 
 const ViewOrder = () => {
@@ -55,12 +56,7 @@ const ViewOrder = () => {
       </i>
       <div className={`filter-collapse ${isOpen ? "open" : ""}`}>
         <div className="row mt-3 mb-3">
-          <div className="col-">
-            <input type="text" placeholder="Order Name" className="common-input m-1" />
-            <input type="text" placeholder="Customer Name" className="common-input m-1" />
-            <input type="text" placeholder="Vehicle Number" className="common-input m-1" />
-            <input type="text" placeholder="Status" className="common-input m-1" />
-          </div>
+          <Shared />
         </div>
       </div>
 
